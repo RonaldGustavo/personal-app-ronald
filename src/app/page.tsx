@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { FaWhatsapp, FaEnvelope } from 'react-icons/fa';
 import { Typewriter } from 'react-simple-typewriter';
+import { TypeAnimation } from 'react-type-animation';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -114,14 +115,11 @@ export default function Home() {
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight flex items-baseline gap-2">
                   <span className="whitespace-nowrap">Hi&nbsp;I’m</span>
                   <span className="text-pink-400 min-w-[16ch] inline-block align-baseline">
-                    <Typewriter
-                      words={['Ronald Gustavo']}
-                      cursor
-                      loop
-                      cursorStyle="🏆"
-                      typeSpeed={150}
-                      deleteSpeed={150}
-                      cursorBlinking={false}
+                    <TypeAnimation
+                      sequence={['Ronald Gustavo', 1000, 'Developer', 1000]}
+                      wrapper="span"
+                      cursor={true}
+                      repeat={Infinity}
                     />
                   </span>
                 </h1>
@@ -177,7 +175,7 @@ export default function Home() {
                   href="https://wa.me/6281278541350"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 hover:text-pink-400"
+                  className="flex items-center space-x-2 hover:text-pink-400 transition-colors duration-200"
                 >
                   <div className="p-2 bg-white/10 rounded-full border border-white/20">
                     <FaWhatsapp size={16} className="text-green-500" />
@@ -194,8 +192,11 @@ export default function Home() {
                     href="mailto:ronaldgustavo.rg@gmail.com"
                     className="font-medium tracking-wide hover:text-pink-400 transition-colors duration-200"
                   >
-                    ronaldgustavo@gmail.com
+                    ronaldgustavo.rg@gmail.com
                   </a>
+                </div>
+                <div className="flex items-center gap-2 animate-bounce">
+                  <span className="text-pink-400 text-xl">👈</span>
                 </div>
               </div>
             </div>
