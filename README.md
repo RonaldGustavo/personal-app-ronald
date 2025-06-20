@@ -14,7 +14,7 @@ This is my personal portfolio website, built to showcase my skills, projects, an
 
 Here is the UI of this portfolio:
 
-![My Portfolio Landing Page](/assets/image/UI-HOME.png)
+![My Portfolio Landing Page](https://github.com/RonaldGustavo/personal-app-ronald/blob/main/public/assets/image/UI-HOME.png)
 
 > You can also view the live site [here](https://personal-app-ronald-plvlqv8wd-ronaldgustavos-projects.vercel.app) <!-- Ganti dengan link kamu -->
 
