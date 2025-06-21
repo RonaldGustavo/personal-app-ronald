@@ -170,31 +170,35 @@ export default function Home() {
               </div>
 
               {/* //NOTE - Contact */}
-              <div className="flex flex-col sm:flex-row sm:items-center sm:gap-8 gap-4 text-gray-100 text-xs sm:text-sm mt-8">
-                <a
-                  href="https://wa.me/6281278541350"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 hover:text-pink-400 transition-colors duration-200"
-                >
-                  <div className="p-2 bg-white/10 rounded-full border border-white/20">
-                    <FaWhatsapp size={16} className="text-green-500" />
-                  </div>
-                  <span className="font-medium tracking-wide">
-                    +62 812-7854-1350
-                  </span>
-                </a>
-                <div className="flex items-center gap-2">
-                  <div className="p-2 bg-white/10 rounded-full border border-white/20">
-                    <FaEnvelope size={16} className="text-white" />
-                  </div>
+              <div className="flex flex-row sm:flex-row sm:items-center sm:gap-8 gap-4 text-gray-100 text-xs sm:text-sm mt-8">
+                <div className="flex flex-col sm:flex-row gap-2 sm:gap-8">
                   <a
-                    href="mailto:ronaldgustavo.rg@gmail.com"
-                    className="font-medium tracking-wide hover:text-pink-400 transition-colors duration-200"
+                    href="https://wa.me/6281278541350"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 hover:text-pink-400 transition-colors duration-200"
                   >
-                    ronaldgustavo.rg@gmail.com
+                    <div className="p-2 bg-white/10 rounded-full border border-white/20">
+                      <FaWhatsapp size={16} className="text-green-500" />
+                    </div>
+                    <span className="font-medium tracking-wide">
+                      +62 812-7854-1350
+                    </span>
                   </a>
+
+                  <div className="flex items-center space-x-2">
+                    <div className="p-2 bg-white/10 rounded-full border border-white/20">
+                      <FaEnvelope size={16} className="text-white" />
+                    </div>
+                    <a
+                      href="mailto:ronaldgustavo.rg@gmail.com"
+                      className="font-medium tracking-wide hover:text-pink-400 transition-colors duration-200"
+                    >
+                      ronaldgustavo.rg@gmail.com
+                    </a>
+                  </div>
                 </div>
+
                 <div className="flex items-center gap-2 animate-bounce">
                   <span className="text-pink-400 text-xl">👈</span>
                 </div>
