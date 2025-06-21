@@ -13,7 +13,7 @@ export default function Home() {
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/assets/document/cv-resume-ronaldg.pdf';
+    link.href = '/assets/document/cv-resume-ronaldgustavo.pdf';
     link.download = 'RonaldG-resume-cv.pdf';
     document.body.appendChild(link);
     link.click();
