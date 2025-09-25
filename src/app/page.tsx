@@ -3,7 +3,8 @@ import { useEffect } from 'react';
 import { FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { Home, Navbar } from '@/partials';
+import { Home } from '@/partials';
+import { Navbar } from '@/components';
 
 export default function Page() {
   const skillsData = [
