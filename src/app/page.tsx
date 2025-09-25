@@ -17,7 +17,7 @@ export default function Page() {
 
   const contactsData = [
     {
-      id: 'whatsapp',
+      id: 'wa',
       href: 'https://wa.me/6281278541350',
       icon: <FaWhatsapp size={16} className="text-green-500" />,
       label: '+62 812-7854-1350',
@@ -29,6 +29,13 @@ export default function Page() {
       icon: <FaEnvelope size={16} className="text-white" />,
       label: 'ronaldgustavo.rg@gmail.com',
       isMail: true,
+    },
+    {
+      id: 'github',
+      href: 'https://github.com/RonaldGustavo',
+      icon: <FaEnvelope size={16} className="text-white" />,
+      label: 'https://github.com/RonaldGustavo',
+      isMail: false,
     },
   ];
 
@@ -91,7 +98,7 @@ export default function Page() {
     <div className="bg-gradient-to-b from-[#0b0c10] to-black text-white font-sans min-h-screen">
       <Navbar
         brand="RonaldG."
-        menuItems={['Home', 'Projects', 'Contact']}
+        menuItems={['Home', 'Projects']}
         resumePath="/assets/document/cv-resume-cv.pdf"
         resumeFileName="RonaldG-resume-cv.pdf"
       />
