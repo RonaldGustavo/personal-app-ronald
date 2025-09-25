@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface NavbarProps {
   brand: string;
@@ -15,6 +15,26 @@ const Navbar = ({
 }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState(menuItems[0] || '');
+
+  useEffect(() => {
+    const updateActiveMenu = () => {
+      const currentHash = window.location.hash.replace('#', '');
+      const matchedMenu = menuItems.find(
+        (item) => item.toLowerCase() === currentHash.toLowerCase()
+      );
+      if (matchedMenu) {
+        setActiveMenu(matchedMenu);
+      }
+    };
+
+    updateActiveMenu();
+
+    window.addEventListener('hashchange', updateActiveMenu);
+
+    return () => {
+      window.removeEventListener('hashchange', updateActiveMenu);
+    };
+  }, [menuItems]);
 
   const handleDownload = () => {
     const link = document.createElement('a');
@@ -113,7 +133,9 @@ const Navbar = ({
                     setActiveMenu(item);
                     setIsMenuOpen(false);
                   }}
-                  className="hover:text-pink-400 transition-colors font-semibold"
+                  className={`transition-colors font-semibold ${
+                    activeMenu === item ? 'text-white' : 'hover:text-pink-400'
+                  }`}
                 >
                   {item}
                 </a>

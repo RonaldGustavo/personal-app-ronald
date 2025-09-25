@@ -1,12 +1,14 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { FaEnvelope, FaWhatsapp } from 'react-icons/fa';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { Home } from '@/partials';
+import { Home, Project } from '@/partials';
 import { Navbar } from '@/components';
 
 export default function Page() {
+  const [activeHash, setActiveHash] = useState<string>('home');
+
   const skillsData = [
     ['React', 'React Native'],
     ['Vue', 'Flutter'],
@@ -30,21 +32,71 @@ export default function Page() {
     },
   ];
 
+  const projects = [
+    {
+      title: 'Pokemon App',
+      url: 'https://pokemon-app-next-six.vercel.app',
+      description:
+        'A modern, responsive Pokédex web app built with Next.js, Tailwind CSS, and TypeScript. Features client-side rendering, real-time Pokémon data from PokéAPI, search and filter functionality, and mobile-friendly design.',
+    },
+    {
+      title: 'Movie App',
+      url: 'https://movie-ronald.vercel.app',
+      description:
+        'Movie Search Website Built with React – Discover and Explore Movies Instantly',
+    },
+    {
+      title: '3D Animation',
+      url: 'https://threejs-3-d-animation.vercel.app',
+      description:
+        'A project showcasing 3D animation built using the Three.js library, vanilla javascript, and built with Vite.',
+    },
+    {
+      title: 'Animelist App',
+      url: 'https://animelist-nuxt-ts.vercel.app',
+      description:
+        'A modern and responsive Anime List web application built with Nuxt 3 and TypeScript, using GraphQL to fetch data efficiently from a public anime API (e.g., AniList).',
+    },
+    {
+      title: 'Calculator App',
+      url: 'https://angular-calculator-app-beta.vercel.app/calculator',
+      description:
+        'A modern and responsive Calculator Application built with Angular 19, featuring a clean UI and smooth user experience. Designed to handle basic arithmetic operations with precision and styled for a minimal yet elegant look.',
+    },
+    {
+      title: 'CMS TMDB',
+      url: 'https://cms-tmdb-react.vercel.app',
+      description:
+        'This project is a simple Content Management System (CMS) designed for viewing and managing movie and TV show data fetched from The Movie Database (TMDb) API using React framework',
+    },
+  ];
+
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
+
     window.location.hash = 'home';
+    setActiveHash('home');
+
+    const handleHashChange = () => {
+      setActiveHash(window.location.hash.replace('#', ''));
+    };
+    window.addEventListener('hashchange', handleHashChange);
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
   }, []);
 
   return (
-    <div>
-      <div className="bg-gradient-to-b from-[#0b0c10] to-black text-white font-sans min-h-screen">
-        <Navbar
-          brand="RonaldG."
-          menuItems={['Home', 'Projects', 'Contact']}
-          resumePath="/assets/document/cv-resume-ronaldgustavo.pdf"
-          resumeFileName="RonaldG-resume-cv.pdf"
-        />
+    <div className="bg-gradient-to-b from-[#0b0c10] to-black text-white font-sans min-h-screen">
+      <Navbar
+        brand="RonaldG."
+        menuItems={['Home', 'Projects', 'Contact']}
+        resumePath="/assets/document/cv-resume-cv.pdf"
+        resumeFileName="RonaldG-resume-cv.pdf"
+      />
 
+      {activeHash === 'home' && (
         <Home
           welcomeText="Welcome to my portfolio"
           nameSequence={['Ronald Gustavo', 1000, 'Developer', 1000]}
@@ -58,7 +110,9 @@ export default function Page() {
             alt: 'Profile Ronald',
           }}
         />
-      </div>
+      )}
+
+      {activeHash === 'projects' && <Project projects={projects} />}
     </div>
   );
 }
