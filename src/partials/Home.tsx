@@ -1,49 +1,35 @@
 import { Contact, Intro, Profile, Skill } from '@/components';
+import { CONTACTS_DATA, SKILLS_DATA } from '@/data';
 
-interface HomeProps {
-  welcomeText: string;
-  nameSequence: (string | number)[];
-  descriptions: string[];
-  skillsData: string[][];
-  contactsData: {
-    id: string;
-    href: string;
-    icon: React.ReactNode;
-    label: string;
-    isMail: boolean;
-  }[];
-  profile: {
-    src: string;
-    alt: string;
-  };
-}
-
-const Home: React.FC<HomeProps> = ({
-  welcomeText,
-  nameSequence,
-  descriptions,
-  skillsData,
-  contactsData,
-  profile,
-}) => {
+const Home = () => {
   return (
-    <div className="grid md:grid-cols-2 grid-cols-1 h-screen w-full px-8 md:px-16 pt-32 md:pt-0">
-      <div className="flex items-center justify-center px-4 md:px-0">
-        <div className="space-y-8 max-w-xl min-w-[16ch]">
-          <Intro
-            welcomeText={welcomeText}
-            nameSequence={nameSequence}
-            descriptions={descriptions}
-          />
-
-          <Skill skillsData={skillsData} />
-
-          <Contact contacts={contactsData} />
+    <div className="min-h-screen w-full px-6 md:px-16 pt-24 pb-20 md:pt-0">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 grid-cols-1 md:min-h-screen gap-8 md:gap-12">
+        {/* Text content – appears below image on mobile, left on desktop */}
+        <div className="flex items-center justify-center order-2 md:order-1">
+          <div className="space-y-8 w-full max-w-xl" data-aos="fade-right">
+            <Intro
+              welcomeText="Welcome to my portfolio"
+              nameSequence={['Ronald Gustavo', 1000, 'Developer', 1000]}
+              descriptions={[
+                'Frontend Engineer focused on building elegant and high-performance apps for Android, iOS, and the web.',
+              ]}
+            />
+            <Skill skillsData={SKILLS_DATA} />
+            <Contact contacts={CONTACTS_DATA} />
+          </div>
         </div>
-      </div>
 
-      <div className="flex items-center justify-center px-4 md:px-0 mt-6 md:mt-0 floatX">
-        <Profile src={profile.src} alt={profile.alt} />
+        {/* Profile image – appears on top on mobile, right on desktop */}
+        <div
+          className="flex items-center justify-center order-1 md:order-2 pt-6 md:pt-0"
+          data-aos="fade-left"
+        >
+          <Profile
+            src="/assets/image/profile-ronald.webp"
+            alt="Ronald Gustavo – Frontend Engineer"
+          />
+        </div>
       </div>
     </div>
   );

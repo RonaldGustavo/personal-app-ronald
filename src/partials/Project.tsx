@@ -1,81 +1,157 @@
-import React, { useState } from 'react';
+'use client';
+import { useState } from 'react';
+import { PROJECTS_DATA } from '@/data';
 
-interface ProjectItem {
-  title: string;
-  description: string;
-  url: string;
-}
+const ChevronLeft = () => (
+  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+  </svg>
+);
 
-interface ProjectProps {
-  projects: ProjectItem[];
-}
+const ChevronRight = () => (
+  <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+  </svg>
+);
 
-const Project: React.FC<ProjectProps> = ({ projects }) => {
+const Project = () => {
   const [current, setCurrent] = useState(0);
-  const total = projects.length;
+  const total = PROJECTS_DATA.length;
+  const project = PROJECTS_DATA[current];
 
-  const prev = () => setCurrent((prev) => (prev === 0 ? total - 1 : prev - 1));
-  const next = () => setCurrent((prev) => (prev === total - 1 ? 0 : prev + 1));
+  const prev = () => setCurrent((c) => (c === 0 ? total - 1 : c - 1));
+  const next = () => setCurrent((c) => (c === total - 1 ? 0 : c + 1));
 
   return (
-    <section className="w-screen h-screen bg-black flex justify-center relative overflow-hidden px-6 md:px-16 pt-24 md:pt-28">
-      <button
-        onClick={prev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 shadow-lg backdrop-blur"
-        aria-label="Sebelumnya"
-      >
-        <svg
-          width="32"
-          height="32"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
+    <div className="min-h-screen px-6 md:px-16 pt-24 pb-20">
+      <div className="max-w-7xl mx-auto">
+        <h2
+          className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text mb-8 md:mb-12"
+          data-aos="fade-up"
         >
-          <path d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
+          Projects
+        </h2>
 
-      <div className="w-full h-full max-w-6xl grid grid-cols-1 md:grid-cols-[30%_70%] gap-6">
-        <div className="flex flex-col items-start justify-center px-2 md:px-6">
-          <h2 className="text-white text-xl md:text-2xl font-bold modern-title relative after-gradient-underline mb-2">
-            {projects[current].title}
-          </h2>
-          <p className="text-gray-300 text-sm md:text-base mt-2 max-w-md">
-            {projects[current].description}
-          </p>
+        {/* ── Mobile: card grid ── */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden">
+          {PROJECTS_DATA.map((proj, i) => (
+            <a
+              key={proj.title}
+              href={proj.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-aos="fade-up"
+              data-aos-delay={i * 80}
+              className="flex flex-col bg-white/5 border border-white/10 rounded-2xl p-5 hover:border-purple-500/50 hover:bg-white/8 transition-all duration-200 group"
+            >
+              <h3 className="text-base font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">
+                {proj.title}
+              </h3>
+              <p className="text-gray-400 text-xs leading-relaxed mb-4 line-clamp-3 flex-1">
+                {proj.description}
+              </p>
+              <div className="flex flex-wrap gap-1 mb-3">
+                {proj.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="text-xs bg-purple-900/40 text-purple-300 px-2 py-0.5 rounded-full border border-purple-700/30"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <span className="text-xs text-purple-400 font-medium mt-auto">
+                View Demo →
+              </span>
+            </a>
+          ))}
         </div>
 
-        <div className="flex items-center justify-center w-full h-full">
-          <div className="w-full h-[75vh] md:h-[85vh] rounded-xl overflow-hidden shadow-2xl border-2 border-white/10 bg-white">
-            <iframe
-              src={projects[current].url}
-              title={projects[current].title}
-              className="w-full h-full"
-              frameBorder="0"
-              allowFullScreen
-            />
+        {/* ── Desktop: carousel with iframe ── */}
+        <div className="hidden md:block" data-aos="fade-up">
+          <div className="grid grid-cols-[32%_68%] gap-8 min-h-[78vh]">
+            {/* Info panel */}
+            <div className="flex flex-col justify-center">
+              <p className="text-sm text-gray-500 font-mono mb-4">
+                {String(current + 1).padStart(2, '0')}&nbsp;/&nbsp;{String(total).padStart(2, '0')}
+              </p>
+              <h3 className="text-2xl font-bold gradient-text relative gradient-underline mb-6 w-fit">
+                {project.title}
+              </h3>
+              <p className="text-gray-300 text-sm leading-relaxed mb-5">
+                {project.description}
+              </p>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {project.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="text-xs bg-purple-900/40 text-purple-300 px-3 py-1 rounded-full border border-purple-700/30"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-purple-300 border border-purple-500/40 hover:border-purple-400 hover:bg-purple-500/10 rounded-lg px-4 py-2 transition-all duration-200 w-fit mb-8"
+              >
+                Visit Live Demo →
+              </a>
+              {/* Nav controls */}
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={prev}
+                  aria-label="Previous project"
+                  className="bg-white/10 hover:bg-white/20 rounded-full p-2 transition-colors"
+                >
+                  <ChevronLeft />
+                </button>
+                <button
+                  onClick={next}
+                  aria-label="Next project"
+                  className="bg-white/10 hover:bg-white/20 rounded-full p-2 transition-colors"
+                >
+                  <ChevronRight />
+                </button>
+              </div>
+            </div>
+
+            {/* iframe preview */}
+            <div
+              className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-white"
+              style={{ height: '78vh' }}
+            >
+              <iframe
+                key={project.url}
+                src={project.url}
+                title={project.title}
+                className="w-full h-full"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          {/* Dots */}
+          <div className="flex justify-center items-center gap-2 mt-6">
+            {PROJECTS_DATA.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                aria-label={`Go to project ${i + 1}`}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  i === current
+                    ? 'bg-purple-400 w-6'
+                    : 'bg-white/30 hover:bg-white/50 w-2'
+                }`}
+              />
+            ))}
           </div>
         </div>
       </div>
-
-      <button
-        onClick={next}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/40 text-white rounded-full p-3 shadow-lg backdrop-blur"
-        aria-label="Selanjutnya"
-      >
-        <svg
-          width="32"
-          height="32"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-        >
-          <path d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
-    </section>
+    </div>
   );
 };
 

@@ -1,76 +1,53 @@
-import { ReactNode } from 'react';
-import { FaGithub } from 'react-icons/fa';
+import { FaWhatsapp, FaEnvelope, FaGithub } from 'react-icons/fa';
+import type { ContactItem, ContactId } from '@/data';
 
-type ContactItem = {
-  id: string;
-  href: string;
-  icon: ReactNode;
-  label: string;
-  isMail?: boolean;
+const ICON_CONFIG: Record<
+  ContactId,
+  { icon: React.ReactNode; hoverClass: string }
+> = {
+  whatsapp: {
+    icon: <FaWhatsapp size={16} />,
+    hoverClass: 'hover:text-green-400 hover:border-green-400/40',
+  },
+  email: {
+    icon: <FaEnvelope size={16} />,
+    hoverClass: 'hover:text-blue-400 hover:border-blue-400/40',
+  },
+  github: {
+    icon: <FaGithub size={16} />,
+    hoverClass: 'hover:text-purple-400 hover:border-purple-400/40',
+  },
 };
+
+const isExternal = (href: string) =>
+  !href.startsWith('mailto:') && !href.startsWith('tel:');
 
 interface ContactProps {
   contacts?: ContactItem[];
 }
 
-
 const Contact = ({ contacts = [] }: ContactProps) => {
-  const wa = contacts.find((c) => c.id === 'wa');
-  const email = contacts.find((c) => c.id === 'email');
-  let github = contacts.find((c) => c.id === 'github');
-  if (github) {
-    github = { ...github, icon: <FaGithub size={18} className="text-white" /> };
-  }
-
   return (
-    <div className="flex flex-col gap-2 text-gray-100 text-xs sm:text-sm mt-8 w-full max-w-xs">
-      <div className="flex flex-row gap-4 w-full items-center">
-        {wa && (
+    <div className="flex flex-col gap-2 text-gray-300 text-xs sm:text-sm">
+      {contacts.map((contact) => {
+        const config = ICON_CONFIG[contact.id];
+        return (
           <a
-            key={wa.id}
-            href={wa.href}
-            target={wa.isMail ? '_self' : '_blank'}
+            key={contact.id}
+            href={contact.href}
+            target={isExternal(contact.href) ? '_blank' : '_self'}
             rel="noopener noreferrer"
-            className="flex items-center space-x-2 hover:text-green-400 transition-colors duration-200"
+            className={`flex items-center gap-3 w-fit transition-colors duration-200 group ${config.hoverClass}`}
           >
-            <div className="p-2 bg-white/10 rounded-full border border-white/20">
-              {wa.icon}
+            <div className="p-2 bg-white/10 rounded-full border border-white/20 transition-colors duration-200 group-hover:bg-white/15">
+              {config.icon}
             </div>
-            <span className="font-medium tracking-wide whitespace-nowrap">{wa.label}</span>
+            <span className="font-medium tracking-wide truncate max-w-[200px] sm:max-w-xs">
+              {contact.label}
+            </span>
           </a>
-        )}
-        {email && (
-          <a
-            key={email.id}
-            href={email.href}
-            target={email.isMail ? '_self' : '_blank'}
-            rel="noopener noreferrer"
-            className="flex items-center space-x-2 hover:text-blue-400 transition-colors duration-200"
-          >
-            <div className="p-2 bg-white/10 rounded-full border border-white/20">
-              {email.icon}
-            </div>
-            <span className="font-medium tracking-wide whitespace-nowrap">{email.label}</span>
-          </a>
-        )}
-      </div>
-
-      {github && (
-        <div className="flex flex-row w-full justify-start mt-2">
-          <a
-            key={github.id}
-            href={github.href}
-            target={github.isMail ? '_self' : '_blank'}
-            rel="noopener noreferrer"
-            className="flex items-center space-x-2 hover:text-pink-400 transition-colors duration-200"
-          >
-            <div className="p-2 bg-white/10 rounded-full border border-white/20">
-              {github.icon}
-            </div>
-            <span className="font-medium tracking-wide whitespace-nowrap">{github.label}</span>
-          </a>
-        </div>
-      )}
+        );
+      })}
     </div>
   );
 };
