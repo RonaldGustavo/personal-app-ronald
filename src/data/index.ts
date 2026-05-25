@@ -30,18 +30,18 @@ export const CONTACTS_DATA: ContactItem[] = [
 
 export const PROJECTS_DATA: ProjectItem[] = [
   {
-    title: 'Pokemon App',
-    url: 'https://pokemon-app-next-six.vercel.app',
-    tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-    description:
-      'A modern, responsive Pokédex web app built with Next.js, Tailwind CSS, and TypeScript. Features client-side rendering, real-time Pokémon data from PokéAPI, search and filter functionality, and mobile-friendly design.',
-  },
-  {
     title: 'Movie App',
     url: 'https://movie-ronald.vercel.app',
     tech: ['React', 'JavaScript'],
     description:
       'Movie Search Website Built with React – Discover and Explore Movies Instantly.',
+  },
+  {
+    title: 'Pokemon App',
+    url: 'https://pokemon-app-next-six.vercel.app',
+    tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+    description:
+      'A modern, responsive Pokédex web app built with Next.js, Tailwind CSS, and TypeScript. Features client-side rendering, real-time Pokémon data from PokéAPI, search and filter functionality, and mobile-friendly design.',
   },
   {
     title: '3D Animation',
@@ -58,17 +58,24 @@ export const PROJECTS_DATA: ProjectItem[] = [
       'A modern and responsive Anime List web application built with Nuxt 3 and TypeScript, using GraphQL to fetch data efficiently from the AniList API.',
   },
   {
-    title: 'Calculator App',
-    url: 'https://angular-calculator-app-beta.vercel.app/calculator',
-    tech: ['Angular 19', 'TypeScript'],
-    description:
-      'A modern and responsive Calculator Application built with Angular 19, featuring a clean UI and smooth user experience.',
-  },
-  {
     title: 'CMS TMDB',
     url: 'https://cms-tmdb-react.vercel.app',
     tech: ['React', 'TMDb API'],
     description:
       'A simple Content Management System (CMS) for viewing and managing movie and TV show data fetched from The Movie Database (TMDb) API.',
+  },
+  {
+    title: 'To Do List Task',
+    url: 'https://to-do-list-react-nine-ruby.vercel.app/',
+    tech: ['React', 'Vanilla CSS'],
+    description:
+      'A modern task management ToDoList app designed with a board-style interface to simplify task organization. Built with the React.js framework, it supports full CRUD functionality and drag-and-drop to move tasks easily across different statuses.',
+  },
+    {
+    title: 'Calculator App',
+    url: 'https://angular-calculator-app-beta.vercel.app/calculator',
+    tech: ['Angular 19', 'TypeScript'],
+    description:
+      'A modern and responsive Calculator Application built with Angular 19, featuring a clean UI and smooth user experience.',
   },
 ];
