@@ -11,6 +11,9 @@ export default function Page() {
         <section id="home" aria-label="Introduction">
           <Home />
         </section>
+
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent" />
+
         <section id="projects" aria-label="Projects">
           <Project />
         </section>

@@ -23,14 +23,18 @@ const Project = () => {
   const next = () => setCurrent((c) => (c === total - 1 ? 0 : c + 1));
 
   return (
-    <div className="min-h-screen px-6 md:px-16 pt-24 pb-20">
+    <div className="px-6 md:px-16 pt-16 pb-16">
       <div className="max-w-7xl mx-auto">
-        <h2
-          className="text-2xl sm:text-3xl md:text-4xl font-bold gradient-text mb-8 md:mb-12"
-          data-aos="fade-up"
-        >
-          Projects
-        </h2>
+
+        {/* Section header */}
+        <header className="mb-8" data-aos="fade-up">
+          <p className="text-xs font-semibold tracking-[0.2em] text-purple-400 uppercase mb-2">
+            Portfolio
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white">
+            My <span className="gradient-text">Projects</span>
+          </h2>
+        </header>
 
         {/* ── Mobile: card grid ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:hidden">
@@ -69,7 +73,7 @@ const Project = () => {
 
         {/* ── Desktop: carousel with iframe ── */}
         <div className="hidden md:block" data-aos="fade-up">
-          <div className="grid grid-cols-[32%_68%] gap-8 min-h-[78vh]">
+          <div className="grid grid-cols-[32%_68%] gap-8 min-h-[70vh]">
             {/* Info panel */}
             <div className="flex flex-col justify-center">
               <p className="text-sm text-gray-500 font-mono mb-4">
@@ -121,7 +125,7 @@ const Project = () => {
             {/* iframe preview */}
             <div
               className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-white"
-              style={{ height: '78vh' }}
+              style={{ height: '70vh' }}
             >
               <iframe
                 key={project.url}
