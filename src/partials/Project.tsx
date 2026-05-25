@@ -23,7 +23,7 @@ const Project = () => {
   const next = () => setCurrent((c) => (c === total - 1 ? 0 : c + 1));
 
   return (
-    <div className="px-6 md:px-16 pt-16 pb-16">
+    <div className="px-6 md:px-16 pt-20 md:pt-16 pb-16">
       <div className="max-w-7xl mx-auto">
 
         {/* Section header */}
