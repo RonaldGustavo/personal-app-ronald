@@ -18,5 +18,5 @@ Here is the UI of this portfolio:
 
 ![My Portfolio Project Page](https://github.com/RonaldGustavo/personal-app-ronald/blob/main/public/assets/image/UI-HOME2.png)
 
-> You can also view the live site [here](https://personal-app-ronald.vercel.app)
+> You can also view the live site [here](https://www.ronaldgustavo.my.id/)
 
