@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
@@ -13,11 +13,11 @@ const siteUrl = 'https://ronald-gustavo.vercel.app';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Ronald Gustavo – Frontend Engineer (Web & Mobile)',
+    default: 'Ronald Gustavo | Frontend Engineer',
     template: '%s | Ronald Gustavo',
   },
   description:
-    'Personal portfolio of Ronald Gustavo, a Frontend Engineer specializing in crafting modern web applications and cross-platform mobile apps for Android and iOS using React, React Native, Vue, Flutter, and Node.js.',
+    'Frontend Engineer focused on building elegant and high-performance apps for Android, iOS, and the web.',
   keywords: [
     'Frontend Engineer',
     'React',
@@ -30,18 +30,35 @@ export const metadata: Metadata = {
     'Mobile Developer',
     'Ronald Gustavo',
   ],
-  authors: [{ name: 'Ronald Gustavo' }],
+  authors: [{ name: 'Ronald Gustavo', url: siteUrl }],
   creator: 'Ronald Gustavo',
+  publisher: 'Ronald Gustavo',
+  applicationName: 'Ronald Gustavo Portfolio',
+  category: 'technology',
   metadataBase: new URL(siteUrl),
   alternates: { canonical: '/' },
+  manifest: '/site.webmanifest',
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '48x48' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+  // Ambil kode ini dari Google Search Console > Settings > Ownership verification > HTML tag
+  // verification: {
+  //   google: 'GANTI_DENGAN_KODE_VERIFIKASI_GSC',
+  // },
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: siteUrl,
     siteName: 'Ronald Gustavo – Portfolio',
-    title: 'Ronald Gustavo – Frontend Engineer (Web & Mobile)',
+    title: 'Ronald Gustavo | Frontend Engineer',
     description:
-      'Personal portfolio of Ronald Gustavo, a Frontend Engineer specializing in modern web and cross-platform mobile apps.',
+      'Frontend Engineer focused on building elegant and high-performance apps for Android, iOS, and the web.',
     images: [
       {
         url: '/assets/image/profile-ronald.webp',
@@ -53,9 +70,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ronald Gustavo – Frontend Engineer (Web & Mobile)',
+    title: 'Ronald Gustavo | Frontend Engineer',
     description:
-      'Personal portfolio of Ronald Gustavo, a Frontend Engineer specializing in modern web and cross-platform mobile apps.',
+      'Frontend Engineer focused on building elegant and high-performance apps for Android, iOS, and the web.',
     images: ['/assets/image/profile-ronald.webp'],
   },
   robots: {
@@ -69,16 +86,26 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#0b0c10',
+  colorScheme: 'dark',
+};
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Ronald Gustavo',
   url: siteUrl,
+  image: `${siteUrl}/assets/image/profile-ronald.webp`,
   jobTitle: 'Frontend Engineer',
   description:
     'Frontend Engineer specializing in React, React Native, Vue, Flutter, and Node.js.',
+  email: 'mailto:ronaldgustavo.rg@gmail.com',
   sameAs: ['https://github.com/RonaldGustavo'],
   knowsAbout: ['React', 'React Native', 'Vue', 'Flutter', 'Node.js', 'TypeScript', 'Next.js'],
+  mainEntityOfPage: siteUrl,
 };
 
 export default function RootLayout({
