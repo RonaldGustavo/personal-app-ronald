@@ -9,7 +9,7 @@ const inter = Inter({
   display: 'swap',
 });
 
-const siteUrl = 'https://ronald-gustavo.vercel.app';
+const siteUrl = 'https://www.ronaldgustavo.my.id';
 
 export const metadata: Metadata = {
   title: {
