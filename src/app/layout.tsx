@@ -47,10 +47,9 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },
-  // Ambil kode ini dari Google Search Console > Settings > Ownership verification > HTML tag
-  // verification: {
-  //   google: 'GANTI_DENGAN_KODE_VERIFIKASI_GSC',
-  // },
+  verification: {
+    google: '57YNAWSLZKQK7DFE8nkn6sX2LpBanYVZ6EAPUdYK6yA',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
