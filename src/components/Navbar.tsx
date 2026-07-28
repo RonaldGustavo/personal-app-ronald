@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { NAV_ITEMS } from '@/data';
 
 const BRAND = 'RonaldG.';
-const RESUME_PATH = '/assets/document/cv-resume-cv.pdf';
+const RESUME_PATH = '/assets/document/cv-resume-ronaldgustavo.pdf';
 const RESUME_FILENAME = 'RonaldG-resume.pdf';
 
 const Navbar = () => {
