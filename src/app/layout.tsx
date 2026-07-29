@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   referrer: 'origin-when-cross-origin',
   alternates: { canonical: '/' },
-  manifest: '/site.webmanifest',
+  manifest: '/favicon/site.webmanifest',
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
