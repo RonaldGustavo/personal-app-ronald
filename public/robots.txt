@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.ronaldgustavo.my.id/sitemap.xml

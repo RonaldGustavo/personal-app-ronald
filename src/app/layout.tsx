@@ -36,16 +36,24 @@ export const metadata: Metadata = {
   applicationName: 'Ronald Gustavo Portfolio',
   category: 'technology',
   metadataBase: new URL(siteUrl),
+  referrer: 'origin-when-cross-origin',
   alternates: { canonical: '/' },
   manifest: '/site.webmanifest',
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: '48x48' },
+      { url: '/favicon.ico', sizes: 'any' },
       { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
       { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
     ],
     shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  appleWebApp: {
+    title: 'Ronald Gustavo',
+    capable: true,
+    statusBarStyle: 'black-translucent',
   },
   verification: {
     google: '57YNAWSLZKQK7DFE8nkn6sX2LpBanYVZ6EAPUdYK6yA',
