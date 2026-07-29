@@ -42,12 +42,27 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/favicon.ico', sizes: 'any' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      // Google Search needs a square icon that is a multiple of 48px.
+      {
+        url: '/favicon/android-chrome-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        url: '/favicon/android-chrome-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
+      },
     ],
     shortcut: '/favicon.ico',
     apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      {
+        url: '/favicon/apple-touch-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
+      },
     ],
   },
   appleWebApp: {
@@ -66,21 +81,14 @@ export const metadata: Metadata = {
     title: 'Ronald Gustavo | Frontend Engineer',
     description:
       'Frontend Engineer focused on building elegant and high-performance apps for Android, iOS, and the web.',
-    images: [
-      {
-        url: '/assets/image/profile-ronald.webp',
-        width: 400,
-        height: 400,
-        alt: 'Ronald Gustavo – Frontend Engineer',
-      },
-    ],
+    // og:image comes from app/opengraph-image.tsx (1200x630 PNG).
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Ronald Gustavo | Frontend Engineer',
     description:
       'Frontend Engineer focused on building elegant and high-performance apps for Android, iOS, and the web.',
-    images: ['/assets/image/profile-ronald.webp'],
+    // twitter:image comes from app/twitter-image.tsx.
   },
   robots: {
     index: true,
