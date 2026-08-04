@@ -43,13 +43,13 @@ export default function PrivacyPolicy() {
               target="_blank" 
               rel="noopener noreferrer"
             >
-              Google's Privacy & Terms
+              Google&apos;s Privacy & Terms
             </a>
           </p>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">4. Children's Privacy</h2>
+          <h2 className="text-2xl font-semibold mb-4">4. Children&apos;s Privacy</h2>
           <p>
             Our application is designed for a general audience. We do not knowingly collect personally 
             identifiable information from children under 13 years of age.
