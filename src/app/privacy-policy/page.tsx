@@ -62,7 +62,9 @@ export default function PrivacyPolicy() {
             If you have any questions about this Privacy Policy, please contact us at:
           </p>
           <ul className="list-disc pl-6 mt-2">
-            <li>Email: ronaldgustavo.rg@gmail.com</li>
+            <li>Name: Ronald Gustavo</li>
+            <li>Email: Ronaldgustavo.rg@gmail.com</li>
+            <li>Phone: +62 812-7854-1350</li>
             <li>Website: https://ronaldgustavo.my.id</li>
           </ul>
         </section>
